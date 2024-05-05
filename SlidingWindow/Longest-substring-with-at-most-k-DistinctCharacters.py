@@ -40,16 +40,15 @@ def solve_two_pointer_sliding_window(string: str, k: int) -> int:
             distinct_char_dict[string[right_pointer]] = 1
 
         # Check given condition
-        if distinct_char_dict.keys().__len__() > k:
-            # Shrinking the window until the dictionary is less than or equal to k
-            while distinct_char_dict.keys().__len__() > k:
-                distinct_char_dict[string[left_pointer]] = (
-                    distinct_char_dict.get(string[left_pointer]) - 1
-                )
-                if distinct_char_dict.get(string[left_pointer]) == 0:
-                    distinct_char_dict.pop(string[left_pointer])
+        # Shrinking the window until the dictionary is less than or equal to k
+        while distinct_char_dict.keys().__len__() > k:
+            distinct_char_dict[string[left_pointer]] = (
+                distinct_char_dict.get(string[left_pointer]) - 1
+            )
+            if distinct_char_dict.get(string[left_pointer]) == 0:
+                distinct_char_dict.pop(string[left_pointer])
 
-                left_pointer += 1
+            left_pointer += 1
 
         if distinct_char_dict.keys().__len__() == k:
             longest_window = max(longest_window, right_pointer - left_pointer + 1)
