@@ -49,9 +49,13 @@ def solve_two_pointer_sliding_window(string: str, k: int) -> int:
                 distinct_char_dict.pop(string[left_pointer])
 
             left_pointer += 1
+        
+        # for strict k only
+        # if distinct_char_dict.keys().__len__() == k:
+        #     longest_window = max(longest_window, right_pointer - left_pointer + 1)
 
-        if distinct_char_dict.keys().__len__() == k:
-            longest_window = max(longest_window, right_pointer - left_pointer + 1)
+        # at most k
+        longest_window = max(longest_window, right_pointer - left_pointer + 1)
         right_pointer += 1
 
     if longest_window == float("-inf"):
@@ -68,5 +72,6 @@ def longest_substring_k_distinct(string: str, k: int) -> int:
 print(longest_substring_k_distinct("aaabbccd", 2))  # correct: 5
 print(longest_substring_k_distinct("eceba", 2))  # correct: 3
 print(longest_substring_k_distinct("aabbcc", 3))  # correct: 6
-print(longest_substring_k_distinct("aaabbb", 3))  # correct: 0
+print(longest_substring_k_distinct("aaabbb", 3))  # correct: 6
 print(longest_substring_k_distinct("araaci", 2))  # correct: 4
+print(longest_substring_k_distinct("araaci", 1))  # correct: 2
