@@ -50,7 +50,7 @@ def solve_two_pointer_sliding_window(string: str, k: int) -> int:
 
             left_pointer += 1
 
-        if distinct_char_dict.keys().__len__() <= k:
+        if distinct_char_dict.keys().__len__() == k:
             longest_window = max(longest_window, right_pointer - left_pointer + 1)
         right_pointer += 1
 
