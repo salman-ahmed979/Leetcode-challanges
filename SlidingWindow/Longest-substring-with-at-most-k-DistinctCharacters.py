@@ -1,5 +1,8 @@
+# For strict k
 # link : https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
 
+# For at most k:
+# link: https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
 
 def solve_brute_force(string: str, k: int) -> int:
     longest_substring = float("-inf")
@@ -15,7 +18,7 @@ def solve_brute_force(string: str, k: int) -> int:
                 longest_substring = max(longest_substring, (j - 1) - i + 1)
                 break
 
-        if distinct_character.__len__() == k and longest_substring == float("-inf"):
+        if distinct_character.__len__() <= k and longest_substring == float("-inf"):
             longest_substring = max(longest_substring, len(string))
 
     if longest_substring == float("-inf"):
